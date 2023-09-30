@@ -29,7 +29,7 @@ public class UserServiceImpl implements Service<User> {
     public void dropTable() {
         try (Connection connection = Util.connection();
              Statement statement = connection.createStatement()) {
-            statement.executeUpdate("DROP TABLE users");
+            statement.executeUpdate("DROP TABLE IF EXISTS users");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

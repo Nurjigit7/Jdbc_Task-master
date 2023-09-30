@@ -19,7 +19,7 @@ public class CarServiceImpl implements Service<Car> {
             statement.executeUpdate("CREATE TABLE cars(" +
                     "id SERIAL PRIMARY KEY," +
                     "model VARCHAR(100)NOT NULL, " +
-                    "yearOfRelease DATE," +
+                    "year_of_release DATE," +
                     "color VARCHAR (100)NOT NULL)");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -39,7 +39,7 @@ public class CarServiceImpl implements Service<Car> {
     public void save(Car car) {
         try (Connection connection = Util.connection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "INSERT INTO cars(model,yearOfRelease,color)" +
+                     "INSERT INTO cars(model,year_of_release,color)" +
                              "VALUES (?,?,?)")) {
             preparedStatement.setString(1, car.getModel());
             preparedStatement.setDate(2, Date.valueOf(car.getYearOfRelease()));
